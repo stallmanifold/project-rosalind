@@ -21,4 +21,6 @@ class DnaString(private val data: Seq[NucleoBase]) extends Seq[NucleoBase] {
   override def iterator: Iterator[NucleoBase] = this.data.iterator
 
   override def length: Int = this.data.length
+
+  override def toString = data.mkString
 }
