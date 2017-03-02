@@ -9,5 +9,5 @@ abstract class Problem {
 }
 
 trait Usage {
-  def usage: String
+  def usage: String = "USAGE: sbt run <problem number> <file name>"
 }

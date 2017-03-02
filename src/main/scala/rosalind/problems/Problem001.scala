@@ -13,9 +13,7 @@ object Problem001 {
   }
 }
 
-final class Problem001 extends Problem {
-  private def usage: String = "USAGE: sbt run <problem number> <file name>"
-
+final class Problem001 extends Problem with Usage {
   def name: String = "Counting DNA Nucleotides"
 
   def run(args: Array[String]): Unit = {
