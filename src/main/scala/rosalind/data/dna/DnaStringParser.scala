@@ -13,12 +13,14 @@ object DnaStringParser {
 final class DnaStringParser extends Parser[TraversableOnce[Char], DnaString] {
   def parse(string: TraversableOnce[Char]): Option[DnaString] = {
     // check for invalid characters.
-    for (ch <- string) {
+    val whitespace = (ch: Char) => " \n\r\t".contains(ch)
+    val (iter0, iter1) = string.toIterator.filterNot(whitespace).duplicate
+    for (ch <- iter0) {
       if (step(ch).isEmpty) { None }
     }
 
     val pf = PartialFunction((ch: Char) => step(ch).get)
-    val dnaSeq = string map pf
+    val dnaSeq = iter1 map pf
 
     Some(DnaString(dnaSeq))
   }
