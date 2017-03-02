@@ -16,6 +16,8 @@ object Problem001 {
 final class Problem001 extends Problem {
   private def usage: String = "USAGE: sbt run <problem number> <file name>"
 
+  def name: String = "Counting DNA Nucleotides"
+
   def run(args: Array[String]): Unit = {
     if (args.length < 2) {
       println(usage)

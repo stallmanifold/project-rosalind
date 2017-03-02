@@ -5,4 +5,5 @@ package rosalind.problems
   */
 abstract class Problem {
   def run(args: Array[String]): Unit
+  def name: String
 }
