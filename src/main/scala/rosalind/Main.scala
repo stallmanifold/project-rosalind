@@ -7,7 +7,7 @@ object Main {
   def load(problemNumber: Int, args: Array[String]): Unit = {
     problemNumber match {
       case 1 => problems.Problem001(args)
-      case _ => problems.Problem001(args)
+      case _ => problems.DefaultProblem(args)
     }
   }
 

@@ -7,3 +7,7 @@ abstract class Problem {
   def run(args: Array[String]): Unit
   def name: String
 }
+
+trait Usage {
+  def usage: String
+}
