@@ -1,24 +1,8 @@
-package rosalind.data
+package rosalind.data.dna
 
+import rosalind.data.dna
 import rosalind.parse.Parser
-import rosalind.data.nucleobase.NucleoBase
 
-
-object DnaString {
-  def apply(args: Seq[NucleoBase]): DnaString = {
-    new DnaString(args)
-  }
-
-  def apply(arg: NucleoBase): DnaString = {
-    new DnaString(Seq(arg))
-  }
-
-  def apply(args: TraversableOnce[NucleoBase]): DnaString = {
-    new DnaString(args.toSeq)
-  }
-}
-
-class DnaString(private val seq: Seq[NucleoBase])
 
 object DnaStringParser {
   def apply(string: TraversableOnce[Char]): Option[DnaString] = {
@@ -41,10 +25,10 @@ final class DnaStringParser extends Parser[TraversableOnce[Char], DnaString] {
 
   private def step(ch: Char): Option[NucleoBase] = {
     ch match {
-      case 'T' => Some(nucleobase.T)
-      case 'A' => Some(nucleobase.A)
-      case 'C' => Some(nucleobase.C)
-      case 'G' => Some(nucleobase.G)
+      case 'T' => Some(dna.T)
+      case 'A' => Some(dna.A)
+      case 'C' => Some(dna.C)
+      case 'G' => Some(dna.G)
       case _   => None
     }
   }

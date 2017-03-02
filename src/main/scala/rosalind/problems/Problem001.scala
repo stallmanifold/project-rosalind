@@ -1,15 +1,22 @@
 package rosalind.problems
 
-import rosalind.data
+import rosalind.data.dna
 import scala.io.Source
 import java.io.FileNotFoundException
-import scala.sys
 
 
 object Problem001 {
-  def usage: String = "USAGE: sbt run <problem number> <file name>"
+  def apply(): Unit = new Problem001()
 
-  def main(args: Array[String]): Unit = {
+  def apply(args: Array[String]): Unit = {
+    new Problem001().run(args)
+  }
+}
+
+final class Problem001 extends Problem {
+  private def usage: String = "USAGE: sbt run <problem number> <file name>"
+
+  def run(args: Array[String]): Unit = {
     if (args.length < 2) {
       println(usage)
       sys.exit(0)
@@ -17,7 +24,7 @@ object Problem001 {
 
     try {
       val handle = Source.fromFile(args(1))
-      val dnaStr = data.DnaStringParser(handle)
+      val dnaStr = dna.DnaStringParser(handle)
       println(dnaStr)
     } catch {
       case e: FileNotFoundException => {
@@ -27,3 +34,4 @@ object Problem001 {
     }
   }
 }
+

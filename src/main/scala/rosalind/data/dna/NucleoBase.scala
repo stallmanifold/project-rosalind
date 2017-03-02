@@ -1,4 +1,4 @@
-package rosalind.data.nucleobase
+package rosalind.data.dna
 
 sealed abstract class NucleoBase
 case object T extends NucleoBase
