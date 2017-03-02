@@ -18,11 +18,12 @@ class DnaString(private val seq: Seq[NucleoBase])
 
 final class DnaStringParser extends Parser[String, DnaString] {
   def parse(string: String): Option[DnaString] = {
+    // check for invalid characters.
     for (ch <- string) {
       if (step(ch).isEmpty) { None }
     }
 
-    val dnaSeq: Seq[NucleoBase] = for (ch <- string) yield step(ch).get
+    val dnaSeq = string map (ch => step(ch).get)
 
     Some(DnaString(dnaSeq))
   }
