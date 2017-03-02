@@ -9,7 +9,7 @@ import scala.sys
 object Problem001 {
   def usage: String = "USAGE: sbt run <problem number> <file name>"
 
-  def main(args: Array[String]) = {
+  def main(args: Array[String]): Unit = {
     if (args.length < 2) {
       println(usage)
       sys.exit(0)
@@ -18,7 +18,6 @@ object Problem001 {
     try {
       val handle = Source.fromFile(args(1))
       val dnaStr = data.DnaStringParser(handle)
-      println("Foo")
       println(dnaStr)
     } catch {
       case e: FileNotFoundException => {
