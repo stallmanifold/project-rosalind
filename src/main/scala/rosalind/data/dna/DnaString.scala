@@ -15,4 +15,10 @@ object DnaString {
   }
 }
 
-class DnaString(private val seq: Seq[NucleoBase])
+class DnaString(private val data: Seq[NucleoBase]) extends Seq[NucleoBase] {
+  override def apply(idx: Int): NucleoBase = this.data.apply(idx)
+
+  override def iterator: Iterator[NucleoBase] = this.data.iterator
+
+  override def length: Int = this.data.length
+}
