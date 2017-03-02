@@ -12,18 +12,29 @@ object DnaString {
   def apply(arg: NucleoBase): DnaString = {
     new DnaString(Seq(arg))
   }
+
+  def apply(args: TraversableOnce[NucleoBase]): DnaString = {
+    new DnaString(args.toSeq)
+  }
 }
 
 class DnaString(private val seq: Seq[NucleoBase])
 
-final class DnaStringParser extends Parser[String, DnaString] {
-  def parse(string: String): Option[DnaString] = {
+object DnaStringParser {
+  def apply(string: TraversableOnce[Char]): Option[DnaString] = {
+    new DnaStringParser().parse(string)
+  }
+}
+
+final class DnaStringParser extends Parser[TraversableOnce[Char], DnaString] {
+  def parse(string: TraversableOnce[Char]): Option[DnaString] = {
     // check for invalid characters.
     for (ch <- string) {
       if (step(ch).isEmpty) { None }
     }
 
-    val dnaSeq = string map (ch => step(ch).get)
+    val pf = PartialFunction((ch: Char) => step(ch).get)
+    val dnaSeq = string map pf
 
     Some(DnaString(dnaSeq))
   }
