@@ -26,7 +26,6 @@ final class Problem001 extends Problem with Usage {
       val handle = Source.fromFile(args(1))
       val dnaStr = dna.DnaStringParser(handle)
       val countBases = (base: dna.NucleoBase) => dnaStr map (str => str count (ch => ch == base))
-      
       val a_count = countBases(dna.A).get
       val c_count = countBases(dna.C).get
       val g_count = countBases(dna.G).get
